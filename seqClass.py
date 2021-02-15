@@ -14,7 +14,7 @@ if len(sys.argv) == 1:
     parser.print_help()
     sys.exit(1)
 
-# Obtaining arguments passed in command 
+# Obtaining arguments passed in command
 args = parser.parse_args()
 
 # Avoiding lower case letters
@@ -22,8 +22,10 @@ args.seq = args.seq.upper()
 
 # Check sequence type
 if re.search('^[ACGTU]+$', args.seq):
+    # If the sequence has T and not U, is DNA
     if re.search('T', args.seq) and not re.search('U', args.seq):
         print ('The sequence is DNA')
+    # If the sequence has U and not T, is DNA
     elif re.search('U', args.seq) and not re.search('T', args.seq):
         print ('The sequence is RNA')
     else:
